@@ -22,3 +22,6 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 issues-*.tar
 
+# Ignore secret config files
+*.secret.exs
+
