@@ -6,7 +6,9 @@ defmodule Issues.CLI do
   in a github project
   """
 
-  def run(argv) do
+  import Issues.Printer, only: [print: 2]
+
+  def main(argv) do
     argv
     |> parse_args()
     |> process
@@ -54,6 +56,7 @@ defmodule Issues.CLI do
     |> decode_response()
     |> sort_into_descending_order()
     |> last(count)
+    |> print(["number", "created_at", "title"])
   end
 
   def decode_response({:ok, body}), do: body
